@@ -1,14 +1,15 @@
 <template>
     <jet-authentication-card>
         <template #logo>
-            <jet-authentication-card-logo />
+            <!-- <jet-authentication-card-logo /> -->
+            <img src="../../../images/Formation_CCI.png" class="block h-13 w-auto">
         </template>
 
         <jet-validation-errors class="mb-4" />
 
         <form @submit.prevent="submit">
             <div>
-                <jet-label for="name" value="Name" />
+                <jet-label for="name" value="Nom" />
                 <jet-input id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus autocomplete="name" />
             </div>
 
@@ -18,12 +19,12 @@
             </div>
 
             <div class="mt-4">
-                <jet-label for="password" value="Password" />
+                <jet-label for="password" value="Mot de passe" />
                 <jet-input id="password" type="password" class="mt-1 block w-full" v-model="form.password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <jet-label for="password_confirmation" value="Confirm Password" />
+                <jet-label for="password_confirmation" value="Confirmer le mot de passe" />
                 <jet-input id="password_confirmation" type="password" class="mt-1 block w-full" v-model="form.password_confirmation" required autocomplete="new-password" />
             </div>
 
@@ -41,11 +42,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <inertia-link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    Already registered?
+                    Déjà inscrit ?
                 </inertia-link>
 
                 <jet-button class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                    S'inscrire
                 </jet-button>
             </div>
         </form>

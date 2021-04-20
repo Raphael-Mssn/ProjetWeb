@@ -11,14 +11,15 @@
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
                                 <inertia-link :href="route('dashboard')">
-                                    <jet-application-mark class="block h-9 w-auto" />
+                                    <img src="../../images/Formation_CCI.png" class="block h-12 w-auto">
+                                    <!-- <jet-application-mark class="block h-9 w-auto" /> -->
                                 </inertia-link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <jet-nav-link href="/dashboard" :active="$page.currentRouteName == 'dashboard'">
-                                    Dashboard
+                                    Tableau de bord
                                 </jet-nav-link>
                                 <jet-nav-link href="/courses" :active="$page.currentRouteName == 'courses.index'">
                                     Les formations
@@ -104,11 +105,11 @@
                                     <template #content>
                                         <!-- Account Management -->
                                         <div class="block px-4 py-2 text-xs text-gray-400">
-                                            Manage Account
+                                            Gestion du compte
                                         </div>
 
                                         <jet-dropdown-link :href="route('profile.show')">
-                                            Profile
+                                            Profil
                                         </jet-dropdown-link>
 
                                         <jet-dropdown-link :href="route('api-tokens.index')" v-if="$page.props.jetstream.hasApiFeatures">
@@ -120,7 +121,7 @@
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
                                             <jet-dropdown-link as="button">
-                                                Log Out
+                                                Déconnexion
                                             </jet-dropdown-link>
                                         </form>
                                     </template>

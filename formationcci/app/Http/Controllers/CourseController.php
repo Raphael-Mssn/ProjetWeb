@@ -28,7 +28,7 @@ class CourseController extends Controller
         ]);
     }
 
-    public function show(int $id)
+    public function show($id)
     {
         $course = Course::where('id', $id)->with('episodes')->first();
         $watched = auth()->user()->episodes;
@@ -61,7 +61,7 @@ class CourseController extends Controller
             Episode::create($episode);
         };
 
-        return Redirect::route('dashboard')->with('success', 'Félicitations, la formation a bien été mise 
+        return Redirect::route('courses.index')->with('success', 'Félicitations, la formation a bien été mise 
         en ligne.');
     }
 
@@ -88,7 +88,7 @@ class CourseController extends Controller
             Episode::create($episode);
         }
 
-        return Redirect::route('courses.index')->with('success', 'Félicitations, la formation a bien été modifiée.');
+        return Redirect::route('courses.index')->with('success', 'La formation a bien été modifiée.');
     }
 
     public function toggleProgress(Request $resquest)
@@ -100,5 +100,15 @@ class CourseController extends Controller
         //! sûrement due à une MaJ mais c'est fonctionnel
 
         return $user->episodes;
+    }
+
+    public function deleteCourse($id)
+    {
+        $course = Course::where('id', $id)->with('episodes')->first();
+        $this->authorize('update', $course);
+        $course -> delete();
+
+        return Redirect::route('courses.index')->with('success', 'La formation a bien été supprimée.');
+
     }
 }
